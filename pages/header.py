@@ -6,7 +6,6 @@ class Header(BasePage):
     def __init__(self, page: Page):
         super().__init__(page)
         self.base_locator = 'div[class*="s__n3XNjPDywfBvSKwc"]'
-        # self.wait_page()
 
     def navigate_to_home(self):
         self.page.click('[data-test-id="logo"]')
@@ -21,17 +20,17 @@ class Header(BasePage):
     def  navigate_to_support(self):
         self.page.click('[data-test-id="header-support-button"]')
     
-    def navigate_to_search_hotels(self):
-        self.page.click('[data-test-id="Отели"]')
+    def navigate_to_hotels(self):
+        self.page.get_by_role('link', name="Отели")
 
     def navigate_to_guides(self):
-        self.page.click('[data-test-id="Короче"]')
+        self.page.get_by_role('link', name="Короче")
 
     def navigate_to_favorites(self):
-        self.page.click('[data-test-id="Избранное"]')
+        self.page.get_by_role('link', name="Избранное")
 
     def navigate_to_b2b(self):
-        self.page.click('[data-test-id="Для бизнеса"]')
+        self.page.get_by_role('link', name="Для бизнеса")
 
     def set_text_field_value_by_id(self, data_test_id: str, value: str):
         origin = self.page.locator(self.base_locator+'//[data-test-id="'+data_test_id+'"]")+""]')
@@ -44,8 +43,6 @@ class Header(BasePage):
         origin.fill(value)
 
     def change_origin_destination(self):   
-        # self.page.wait_for_selector('button[data-test-id="round-button"]', state="visible", timeout=10000)
-        # self.page.locator('button[data-test-id="round-button"]').nth(0).click()
         button = self.page.locator(f'{self.base_locator} button[data-test-id="round-button"]')
         button.click()
     
@@ -72,5 +69,4 @@ class Header(BasePage):
         self.page.locator(f'[data-test-id="date-{end_date}"]').click()
 
     def click_button_search(self):
-        #self.page.get_by_role("button", name="Найти билеты").click()
         self.page.locator('[data-test-id="form-submit"]').click()

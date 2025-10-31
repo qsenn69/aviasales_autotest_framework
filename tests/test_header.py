@@ -3,17 +3,6 @@ from utils.config import Config
 from pages.header import Header
 from datetime import date, timedelta
     
-def test_searching(page:Page):
-    header = Header(page)
-    header.open(Config.BASE_URL)
-    header.wait_page()
-    header.fill_origin("Москва")
-    header.fill_destination("Тайбей")
-    header.select_start_date("09.11.2025")
-    header.select_end_date("19.11.2025")
-    header.click_button_search()
-    header.assert_url(f"{Config.BASE_URL}?params=MOW0911TPE19111&with_request=true") 
-
 def test_search(page: Page):
     header = Header(page)
     header.open(Config.BASE_URL)
@@ -31,13 +20,6 @@ def test_search(page: Page):
     header.select_end_date(end_str)
     header.click_button_search()
     header.assert_url(f"{Config.BASE_URL}?params=MOW{start_for_url}TPE{end_for_url}1&with_request=true")
-
-def test_open_settings(page: Page):
-    header = Header(page)
-    header.open(Config.BASE_URL)
-    header.wait_page()
-    header.navigate_to_settings()
-    header.assert_url(f"{Config.BASE_URL}my/settings")
 
 def test_origin_valid_city(page: Page):
     header = Header(page)
@@ -79,5 +61,12 @@ def test_check_calendar_open(page: Page):
     header.open(Config.BASE_URL)
     header.wait_page()
     header.page.locator('[data-test-id="start-date-field"]').click()
-    expect(page.locator('div[class*="s__hyTe7Ro5GAQEcVVu"]')).to_be_visible()
+    expect(page.locator('div[class*="s__bksyKKQU44OvfaUA"]')).to_be_visible()
+
+def test_open_settings(page: Page):
+    header = Header(page)
+    header.open(Config.BASE_URL)
+    header.wait_page()
+    header.navigate_to_settings()
+    header.assert_url(f"{Config.BASE_URL}my/settings")
 

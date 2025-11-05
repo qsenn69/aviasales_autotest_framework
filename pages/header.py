@@ -17,20 +17,20 @@ class Header(BasePage):
     def navigate_to_magazine(self):
         self.page.click('[data-test-id="header-blog-button"]')
     
-    def  navigate_to_support(self):
+    def navigate_to_support(self):
         self.page.click('[data-test-id="header-support-button"]')
     
     def navigate_to_hotels(self):
-        self.page.get_by_role('link', name="Отели")
+        self.page.get_by_role('link', name="Отели").click()
 
     def navigate_to_guides(self):
-        self.page.get_by_role('link', name="Короче")
+        self.page.get_by_role('link', name="Короче").click()
 
     def navigate_to_favorites(self):
-        self.page.get_by_role('link', name="Избранное")
+        self.page.get_by_role('link', name="Избранное").click
 
     def navigate_to_b2b(self):
-        self.page.get_by_role('link', name="Для бизнеса")
+        self.page.get_by_role('link', name="Для бизнеса").click()
 
     def set_text_field_value_by_id(self, data_test_id: str, value: str):
         origin = self.page.locator(self.base_locator+'//[data-test-id="'+data_test_id+'"]")+""]')

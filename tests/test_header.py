@@ -24,8 +24,7 @@ def test_destination_valid_city(header: Header, page: Page):
 def test_change_origin_destination(header: Header, page: Page):
     header.fill_origin("Москва")
     header.fill_destination("Фукуок")
-    page.wait_for_timeout(2000)
-    page.locator('text=Фукуок').filter(has_not=page.locator(HeaderSelectors.DESTINATION_INPUT)).first.click()
+    page.get_by_role("option", name="Фукуок").first.click()
     header.change_origin_destination()
     expect(page.locator(HeaderSelectors.ORIGIN_INPUT)).to_have_value("Фукуок")
     expect(page.locator(HeaderSelectors.DESTINATION_INPUT)).to_have_value("Москва")

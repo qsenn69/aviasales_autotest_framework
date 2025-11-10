@@ -2,7 +2,6 @@ import pytest
 from playwright.sync_api import sync_playwright, Browser, Page
 from utils.config import Config
 from utils.mail_file_sender import MailReporter
-import pytest
 import os
 from pages.header import Header
 from datetime import datetime

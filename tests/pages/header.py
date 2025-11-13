@@ -42,10 +42,6 @@ class Header(BasePage):
     def fill_destination(self, city: str):
         self.page.locator(Config.locator("header", "destination_input")).fill(city)
 
-    def clear_destination(self, city: str):
-        self.page.locator(Config.locator("header", "destination_input")).fill(city)
-        self.page.keyboard.press("Escape")
-
     def select_start_date(self, start_date: str):
         self.page.locator(Config.locator("header", "start_date_field")).click()
         self.page.locator(f'[data-test-id="date-{start_date}"]').click()
